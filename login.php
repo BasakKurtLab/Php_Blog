@@ -14,24 +14,24 @@
     
     if($result->num_rows == 0)
     {
-        header("Location: loginPage.php?emailFalsch=1");
+        header("Location: loginPage.php?message= Diese E-mail Addresse ist nicht registrieret");
         exit();
     }
     else
     {
         $account = $result->fetch_assoc();
 
-        if($account["pass"] == $pass)
+        if($account["passwort"] == $user_pass)
         {
             // ERFOLGREICH EINGELOGGT. Umleitung zur Startseite
             setcookie("eingeloggt", "1", 0, "/");
             setcookie("id", $account["id"], 0, "/");
-            header("Location: ../index.php");
+            header("Location: index.php");
         }
         else
         {
             // PASSWORT IST FALSCH
-            header("Location: loginPage.php?pwFalsch=1");
+            header("Location: loginPage.php?message=leider Sie können nicht einlogen");
         }
     }
     
