@@ -11,6 +11,14 @@
         <input type="submit" value="Einloggen">
     </form>
 
+    <?php
+
+            if(isset($_GET['message'])){
+                echo "<h6>".$_GET['message']."</h6>";
+            }
+
+?>
+
     </main>
 
 <?php
