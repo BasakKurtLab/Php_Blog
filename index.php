@@ -1,10 +1,23 @@
 <?php
     include("header.php");
+    include("verbinden.php");
+    
+    $eingeloggt = false;
+    $name = "";
+
+if(isset($_COOKIE["eingeloggt"]) && $_COOKIE["eingeloggt"] == "1")
+{
+    $eingeloggt = true;
+}
+if(!empty($_COOKIE["id"]))
+{
+    $name = $verbindung->query("SELECT * FROM autoren WHERE id=".$_COOKIE["id"].";")->fetch_assoc()["name"];
+}
 ?>
 
     <main>
         <section class="hero">
-            <h1>Herzlich Willkommen</h1>
+            <h1>Herzlich Willkommen  <?= $name ?></h1>
         </section>
         
         <section class="einleitung">
