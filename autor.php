@@ -27,25 +27,28 @@
             {
                 $autor_row = $result->fetch_assoc(); // Autor row
 
-                $anfrage = "SELECT * FROM posts WHERE autor=" . $autor_id;
-                $result = $verbindung->query($anfrage);
+                
 
-                while($post_row = $result->fetch_assoc()); // post row
+                 ?>
+                 
+                 <span>Autor: <?= $autor_row["name"] ?></span>
+                 <hr>
+
+                 <?php
+                 
+                 $anfrage = "SELECT * FROM posts WHERE autor=" . $autor_id;
+                 $result = $verbindung->query($anfrage);
+
+
+                while($row = $result->fetch_assoc()) // post row
 
                 {
 
-                    
+            
                      ?>
+                     
 
-                    <span>Autor: <?= $autor_row["name"] ?></span>
-
-                    <hr>
-
-                    <a href="post.php?id=<?= $post_row["id"] ?>"><?= $post_row["name"] ?></a><br>
-
-                    
-
-                
+                     <li><a href="post.php?id=<?= $row["id"] ?>"><?= $row["titel"] ?></a></li>
 
                     
 
